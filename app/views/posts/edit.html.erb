@@ -1,0 +1,29 @@
+<h1>Editing Book</h1>
+
+
+	<% if @post.errors.any? %>
+		<div id="error_explanation" class="alert alert-danger">
+			<h2><%= @post.errors.count %>errors prohibited this book from being saved:</h2>
+			<ul>
+				<% @post.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+<%= form_for(@post) do |f| %>
+    <h4>Title</h4>
+    <div>
+    	<%= f.text_field :title %>
+    </div>
+    <h4>Body</h4>
+    <div>
+    	<%= f.text_area :body %>
+    </div>
+    <div id="Update">
+    	<%= f.submit 'Update Book' %>
+    </div>
+<% end %>
+
+<%=link_to 'Show', post_path(@post.id) %><span class="esikiri">|</span><%=link_to 'Back', "/posts/" %>

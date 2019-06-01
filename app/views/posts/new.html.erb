@@ -1,0 +1,68 @@
+<% if flash[:destroy] %>
+	<p class="flash"><%= flash[:destroy] %></p>
+<% end %>
+
+<h1>Books</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Body</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @posts.each do |post| %>
+			<tr>
+				<td>
+					<%= post.title %>
+				</td>
+				<td>
+					<%= post.body %>
+				</td>
+				<td>
+					<%=link_to 'Show', post_path(post.id) %>
+				</td>
+				<td>
+					<%= link_to "Edit", edit_post_path(post.id) %>
+				</td>
+				<td>
+					<%= link_to "Destroy", destroy_post_path(post.id), method: :delete, "data-confirm" => "Are you sure？" %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+
+
+<h2>New book</h2>
+<!-- form_for部分 -->
+<%= form_for(@post) do |f| %>
+
+	<% if @post.errors.any? %>
+		<div id="error_explanation" class="alert alert-danger">
+			<h2><%= @post.errors.count %>errors prohibited this book from being saved:</h2>
+			<ul>
+				<% @post.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+    <h4>Title</h4>
+    <div>
+    	<%= f.text_field :title %>
+    </div>
+ 
+    <h4>Body</h4>
+    <div>
+    	<%= f.text_area :body %>
+    </div>
+ 
+    <div>
+    	<%= f.submit 'Create Book' %>
+    </div>
+ 
+<% end %>
