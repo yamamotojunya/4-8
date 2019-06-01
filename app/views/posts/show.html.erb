@@ -10,5 +10,5 @@
 
 <p><span class="id">Body:</span><%= @post.body %></p>
 
-<%= link_to "Edit", edit_post_path(@post.id) %><span class="sikiri">|</span>
-<%=link_to 'Back', "/posts/" %>
+<%= link_to "Edit", edit_post_path(@post.id),class:"edit_#{@post.id}" %><span class="sikiri">|</span>
+<%=link_to 'Back', "/posts/",class:"back" %>

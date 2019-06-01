@@ -26,4 +26,4 @@
     </div>
 <% end %>
 
-<%=link_to 'Show', post_path(@post.id) %><span class="esikiri">|</span><%=link_to 'Back', "/posts/" %>
+<%=link_to 'Show', post_path(@post.id),class:"show_#{@post.id}" %><span class="esikiri">|</span><%=link_to 'Back', "/posts/",class:"back" %>
